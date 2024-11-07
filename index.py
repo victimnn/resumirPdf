@@ -64,7 +64,7 @@ if st.button('Gerar Resumo'):
         st.subheader("Resumo do Documento")
         st.write(resumo)
     except Exception as e:
-        st.error(f"Ocorreu um erro ao resumir o documento: {e}")
+        st.error(f"Ocorreu um erro ao resumir o documento")
     finally:
         # Remover o arquivo temporário após o uso
         os.remove("temp.pdf")
