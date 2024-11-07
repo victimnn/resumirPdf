@@ -2,6 +2,9 @@
 
 Este projeto é uma aplicação em Python que utiliza **Streamlit** para criar uma interface de usuário e **LangChain** para gerar resumos de documentos PDF. O sistema permite que o usuário faça o upload de um arquivo PDF, que é processado para extrair e resumir o conteúdo das páginas.
 
+## Link
+**[Acesse o Programa aqui] (https://resumirpdf-victimnn.streamlit.app/)**
+
 ## Funcionalidades
 
 - **Carregar PDFs**: Carregue arquivos PDF para análise e resumo.
