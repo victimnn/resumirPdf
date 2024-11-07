@@ -30,7 +30,7 @@ def resumir_documento(caminho_arquivo):
     # Configurar o prompt
     prompt_template = PromptTemplate(
         input_variables=["text"],
-        template="Resuma o seguinte texto em uma explicação concisa e informativa, destacando as ideias principais e pontos importantes, sem omitir informações essenciais, se possível formate em markdown para melhor visualização: Texto: {text}"
+        template="Resuma o seguinte texto em uma explicação concisa e informativa, destacando as ideias principais e pontos importantes, sem omitir informações essenciais, se possivel formate em markdown para melhor visualização: Texto: {text}"
     )
 
     # Criar a cadeia LLMChain com o modelo e o prompt
@@ -52,23 +52,19 @@ st.title("Resumidor de PDF")
 uploaded_file = st.file_uploader("Escolha um arquivo PDF", type="pdf")
 
 if st.button('Gerar Resumo'):
-    # Verificar se o arquivo é realmente um PDF
-    if uploaded_file.type != "application/pdf":
-        st.error("Por favor, envie um arquivo no formato PDF.")
-    else:
-        # Salvar o arquivo temporariamente
-        with open("temp.pdf", "wb") as f:
-            f.write(uploaded_file.getbuffer())
+    # Salvar o arquivo temporariamente
+    with open("temp.pdf", "wb") as f:
+        f.write(uploaded_file.getbuffer())
 
-        try:
-            # Chamar a função de resumo
-            resumo = resumir_documento("temp.pdf")
-            
-            # Exibir o resumo
-            st.subheader("Resumo do Documento")
-            st.write(resumo)
-        except Exception as e:
-            st.error(f"Ocorreu um erro ao resumir o documento: {e}")
-        finally:
-            # Remover o arquivo temporário após o uso
-            os.remove("temp.pdf")
+    try:
+        # Chamar a função de resumo
+        resumo = resumir_documento("temp.pdf")
+        
+        # Exibir o resumo
+        st.subheader("Resumo do Documento")
+        st.write(resumo)
+    except Exception as e:
+        st.error(f"Ocorreu um erro ao resumir o documento: {e}")
+    finally:
+        # Remover o arquivo temporário após o uso
+        os.remove("temp.pdf")
